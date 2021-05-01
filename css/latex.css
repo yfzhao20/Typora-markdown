@@ -1,0 +1,380 @@
+/* ******************** */
+/*这篇样式基于知乎大佬LAN DU的样式，原文知乎链接：
+https://zhuanlan.zhihu.com/p/158767474
+GitHub链接：
+https://github.com/du33169/typora-theme-essay_cn
+主要改动：
+- 适配LaTeX的字体。选用像LaTeX的字体是装“哔”的重要手段。
+- 更改标题、目录和大纲的编号样式。改成1. ，1.1 ， 1.1.1 ，……这样的编号更有一种浓厚的论文感觉。
+- 二级及以下标题全部靠左，适应文章样式。后面加上大空白，适配LaTeX样式
+不足之处：
+- 仍然无法添加页眉页脚。
+适用于小论文、实验报告等对格式要求较松的情况，在不写代码的前提下装“哔”
+*/
+/* ******************** */
+/*导入字体*/
+/*这里是主要的西文字体 LM Roman 10*/
+@font-face {
+    font-family: 'LM Roman 10';
+    font-style: normal;
+    font-weight: normal;
+    src: url("./latex/lmroman10-regular.otf");
+  }
+
+  @font-face {
+    font-family:'LM Roman 10';
+    font-style:italic;
+    font-weight: normal;
+    src: url("./latex/lmroman10-italic.otf");
+  }
+
+  @font-face {
+    font-family: 'LM Roman 10';
+    font-style: normal;
+    font-weight:bold;
+    src: url("./latex/lmroman10-bold.otf");
+  }
+
+  @font-face {
+    font-family:'LM Roman 10';
+    font-style:italic;
+    font-weight:bold;
+    src: url("./latex/lmroman10-bolditalic.otf");
+  }
+
+/*这里是代码块字体*/
+
+@font-face {
+    font-family: 'LM Mono 10';
+    font-style: normal;
+    font-weight: normal;
+    src: url("./latex/lmmono10-regular.otf");
+  }
+
+  @font-face {
+    font-family: 'LM Mono 10';
+    font-style: italic ;
+    font-weight: normal;
+    src: url("./latex/lmmono10-italic.otf");
+  }
+
+/*这里是中文字体，我们导入了思源宋体、宋体。*/ 
+/*按理说宋体就够了，但是Typora宋体显示效果感人，暂时换成思源宋体*/
+@font-face {
+    font-family: 'Source Han Serif';
+    font-style: normal;
+    font-weight: normal;
+    src: url("./latex/SourceHanSerifSC-Regular.otf");
+  }
+
+  @font-face {
+    font-family: 'Source Han Serif';
+    font-style: normal;
+    font-weight: bold;
+    src: url("./latex/SourceHanSerifSC-Bold.otf");
+  }
+
+  @font-face {
+    font-family: simsun;
+    src: url("./latex/simsun.ttc");
+  }
+
+/*  @font-face {
+    font-family: STSong;
+    src: url("./latex/STSONG.TTF");
+  }
+
+  @font-face {
+    font-family:STZHONGS;
+    src: url("./latex/STZHONGS.TTF");
+  }
+*/
+
+
+body{
+    /* border:1px solid bxlack; for debug */
+    padding:0 !important;
+    margin:0 !important;
+    line-height: 1.85rem;/*行距*/
+}
+/* 正文区基本属性，参照wordTeX模板设置字体大小*/
+#write {
+   font-family:'LM Roman 10',"Times New Roman",Arial, "Source Han Serif", simsun , sans-serif; 
+   font-size:11pt;
+   max-width: 21cm; /*A4标准宽度*/
+   border:1px solid #CCC ; /* 添加一个淡灰色的边框 */
+}
+/*页边距处理，模仿标准word*/
+@media screen{
+    #write{
+       padding:2.54cm 3.18cm; 
+    }
+}
+@media print{
+    #write{
+       padding:0 3.18cm !important; 
+       margin:0 !important;
+    }
+}
+@page{
+	margin:2.54cm 0; /*上下/左右 边距，参考了word的默认边距*/
+}
+
+
+#write p{
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight:bold;
+    page-break-after:avoid !important;
+}
+
+/*basic样式采用一般的引言，具有左边框、左缩进*/
+blockquote{
+	font-family:仿宋;
+  border-left:3px solid grey;
+	padding-left:10px;
+  font-size: 11pt;
+	color: grey;
+}
+	/*border-width: 0.5pt 0;
+  border-style:solid;	这一行本来使用了上下边框*/
+/* 标题属性 */
+h1 {
+  font-family:'LM Roman 10',simsun;
+	text-align:center;
+	font-size:16pt;
+}
+h2 {
+	font-family:'LM Roman 10', 黑体; 
+	font-size:14pt;
+}
+h3 {
+	font-family:'LM Roman 10', 黑体; 
+	font-size:12pt;
+}
+h4 {
+	font-family:'LM Roman 10', 黑体; 
+	font-size:11pt;
+}
+h5 {
+	font-family:'LM Roman 10', 黑体; 
+	font-size:11pt;
+}
+
+/* 目录标题属性 */
+.md-toc-h2 {
+	font-family:'LM Roman 10',simsun;
+}
+.md-toc-h3 {
+	font-family:'LM Roman 10',simsun;
+}
+.md-toc-h4 {
+	font-family:'LM Roman 10',simsun;
+}
+/* 三线表 */
+#write table{
+	border-top: 1.5pt solid;
+	border-bottom: 1.5pt solid;
+	font-family:"Source Han Serif";
+	font-size:9pt;
+	text-align:center;
+    page-break-inside:avoid;
+}
+#write table td{
+	padding:7px;
+}
+#write table tr{
+	padding:7px;
+}
+
+#write thead{
+	border-bottom: 0.75pt solid;
+	font-family:黑体;
+	font-size:9pt;
+}
+img{
+    page-break-inside:avoid;
+}
+
+/*行内代码*/
+p code, li code {
+  color: rgb(60, 112, 198);
+  background-color:#fefefe;
+  font-family:'LM Mono 10', 'LM Roman 10','Times New Roman',Arial,'Source Han Serif',simsun,sans-serif;
+  box-sizing: border-box; 
+  /*border: 1px #ced8e4 solid; */
+  border-right: 0px;
+  margin:  0 2px 0 2px ;
+  padding: 0 2px 0 2px;
+  border-radius: 2px 2px 2px 2px ; 
+ /**/ box-shadow: 0 0 1px 1px #c8d3df;  
+}
+
+
+/*下面是自动编号，初始化计数器。使用多级编号，编号后加空格模仿LaTeX */
+#write 
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h2);
+    margin-right: 2rem;
+}
+
+#write h3:before,
+h3.md-focus.md-heading:before /** override the default style for focused headings */ {
+    counter-increment: h3;
+    content: counter(h2) "." counter(h3);
+    margin-right: 2rem;
+}
+
+#write h4:before,
+h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h2) "." counter(h3) "." counter(h4);
+    margin-right: 2rem;
+}
+
+#write h5:before,
+h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5);
+    margin-right: 2rem;
+}
+
+/*目录*/
+.md-toc-content{
+  margin-left: 2em;
+  counter-reset: toc-h2 toc-h3 toc-h4 ;/*修复缺失上级标题时无法递增*/
+  page-break-after: always;
+}
+
+.md-toc-inner{
+  margin-left:0 !important;
+  color:black !important;
+}
+.md-toc-item{
+  color:black !important;
+  font-size: 11pt;
+  font-family: 'LM Roman 10',"Times New Roman",Arial, "Source Han Serif", simsun , sans-serif; 
+}
+/* 目录标题 */
+.md-toc-content .md-toc-h1 {
+/*  display:none;*/
+  counter-reset: toc-h2;
+}
+.md-toc-content .md-toc-h2 {
+  counter-reset: toc-h3;
+}
+.md-toc-content .md-toc-h3 {
+  counter-reset: toc-h4;
+}
+.md-toc-content .md-toc-h4 {
+  counter-reset: toc-h5;
+} 
+.md-toc-content .md-toc-h5 {
+  counter-reset: toc-h6;
+} 
+.md-toc-content .md-toc-h2:before {
+  counter-increment: toc-h2;
+  content: counter(toc-h2);
+  margin-right: 1rem;
+}
+.md-toc-content .md-toc-h3:before {
+  counter-increment: toc-h3;
+  content: counter(toc-h2) "." counter(toc-h3);
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+}
+.md-toc-content .md-toc-h4:before {
+  counter-increment: toc-h4;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4);
+  margin-left: 3.5rem;
+  margin-right: 0.5rem;
+}
+.md-toc-content .md-toc-h5:before {
+  counter-increment: toc-h5;
+  content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(toc-h5);
+  margin-left: 5.5rem;
+  margin-right: 0.5rem;
+}
+/* 大纲标题 */
+.sidebar-content .outline-h1 {
+  counter-reset: outline-h2;
+}
+.sidebar-content .outline-h2 {
+  counter-reset: outline-h3;
+}
+.sidebar-content .outline-h3 {
+  counter-reset: outline-h4;
+}
+.sidebar-content .outline-h4 {
+  counter-reset: outline-h5;
+}
+.sidebar-content .outline-h5 {
+  counter-reset: outline-h6;
+} 
+
+.sidebar-content .outline-h2 .outline-label:before {
+  counter-increment: outline-h2;
+  content: counter(outline-h2) " ";
+}
+.sidebar-content .outline-h3 .outline-label:before {
+  counter-increment: outline-h3;
+  content: counter(outline-h2) "." counter(outline-h3) "  ";
+}
+.sidebar-content .outline-h4 .outline-label:before {
+  counter-increment: outline-h4;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "  ";
+}
+.sidebar-content .outline-h5 .outline-label:before {
+  counter-increment: outline-h5;
+  content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4) "." counter(outline-h5) "  ";
+}
+
+
+/** override the default style for focused headings */
+#write>h3.md-focus:before,
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left:initial;
+    float: none;
+    top:initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
