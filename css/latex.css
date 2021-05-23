@@ -110,16 +110,12 @@ body{
        padding:2.54cm 3.18cm; 
     }
 }
-@media print{
-    #write{
-       padding:0 3.18cm !important; 
-       margin:0 !important;
-    }
+@media print {
+  @page{ 
+      size: A4;
+      margin: 2.54cm 3.18cm 2.54cm 3.18cm; /* 页边距 */
+  }
 }
-@page{
-	margin:2.54cm 0; /*上下/左右 边距，参考了word的默认边距*/
-}
-
 
 #write p{
 	text-align:left;
